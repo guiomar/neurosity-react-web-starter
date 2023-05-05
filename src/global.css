@@ -212,3 +212,9 @@ select {
 .calm-word {
   font-size: 40px;
 }
+
+.calm-image {
+  width: auto;
+  height: 250px;
+  display: flex;
+}
