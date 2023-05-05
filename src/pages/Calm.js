@@ -4,6 +4,8 @@ import { navigate } from "@reach/router";
 import { notion, useNotion } from "../services/notion";
 import { Nav } from "../components/Nav";
 
+import calmPic from '../pages/calmpic.jpg';
+
 export function Calm() {
   const { user } = useNotion();
   const [calm, setCalm] = useState(0);
@@ -34,6 +36,9 @@ export function Calm() {
       {user ? <Nav /> : null}
       <div className="calm-score">
         &nbsp;{calm}% <div className="calm-word">Calm</div>
+      </div>
+      <div className="calm-image">
+        <img src={calmPic} alt="My hola" style={{ filter: "blur(0px)" }}/>
       </div>
     </main>
   );
