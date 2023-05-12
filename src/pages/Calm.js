@@ -9,6 +9,8 @@ import calmPic from '../pages/calmpic.jpg';
 export function Calm() {
   const { user } = useNotion();
   const [calm, setCalm] = useState(0);
+  const [blurAmount, setBlurAmount] = useState(0); // define the blur amount as a state variable
+
 
   useEffect(() => {
     if (!user) {
@@ -23,7 +25,9 @@ export function Calm() {
 
     const subscription = notion.calm().subscribe((calm) => {
       const calmScore = Math.trunc(calm.probability * 100);
+      const blurScore = 10;
       setCalm(calmScore);
+      setBlurAmount(blurScore);
     });
 
     return () => {
@@ -38,7 +42,7 @@ export function Calm() {
         &nbsp;{calm}% <div className="calm-word">Calm</div>
       </div>
       <div className="calm-image">
-        <img src={calmPic} alt="My hola" style={{ filter: "blur(0px)" }}/>
+        <img src={calmPic} alt="My hola" style={{ filter: `blur(${blurAmount}px)` }}/>
       </div>
     </main>
   );
