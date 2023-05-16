@@ -25,7 +25,8 @@ export function Calm() {
 
     const subscription = notion.calm().subscribe((calm) => {
       const calmScore = Math.trunc(calm.probability * 100);
-      const blurScore = 10;
+      //const blurScore = 10;
+      const blurScore = 100-calmScore;
       setCalm(calmScore);
       setBlurAmount(blurScore);
     });
